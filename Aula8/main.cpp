@@ -7,7 +7,7 @@ vector<vector<double>> readMatrix();
 void formatLine (vector<double> &m, double div);
 void subtractLine(vector<double> l1, vector<double> &l2, double mul);
 void gaussMethod (vector<vector<double>> m, double &x, double &y, double &z);
-void printMatrix(vector<vector<double>> m);
+void printMatrix(vector<vector<double>> &m);
 
 int main()
 {
@@ -29,9 +29,12 @@ vector<vector<double>> readMatrix() {
         cin >> x >> y >> z >> r;
         line.push_back(x); line.push_back(y); line.push_back(z); line.push_back(r);
         column.push_back(line);
-        // cout << column[i] << endl;
         line.clear();
     }
+
+    cout << column.size() << endl;
+
+    cout << column[1][2] << endl;
 
     printMatrix(column);
     return column;
@@ -62,10 +65,10 @@ void gaussMethod (vector<vector<double>> m, double &x, double &y, double &z) {
 
 }
 
-void printMatrix(vector<vector<double>> m) {
-    for (int i = 0; i > m.size(); i++) {
+void printMatrix(vector<vector<double>> &m) {
+    for (int i = 0; i < m.size(); i++) {
         cout << "[";
-        for (int j = 0; j > m[i].size(); i++) {
+        for (int j = 0; j < m[i].size(); j++) {
             cout << " " << m[i][j] << " ";
         }
         cout << "]" << endl;
