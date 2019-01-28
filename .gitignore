@@ -53,3 +53,4 @@ Aula11/obj
 Aula11/*.cbp
 Aula11/*.depend
 Aula11/*.layout
+python_algorithms/__pycache__

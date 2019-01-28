@@ -2,6 +2,11 @@
 #include <iomanip>
 #include <cmath>
 
+/*
+ * QUICK FYI: Nao sei ate que ponto e que isto esta bem ou mal, pretty sure que esta um lodo...
+ * please dont quote my code :)
+ */
+
 using namespace std;
 
 float f(float x) {
