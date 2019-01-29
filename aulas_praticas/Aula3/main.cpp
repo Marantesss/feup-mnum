@@ -16,8 +16,10 @@ int main()
     cout << "Sin Integral(20): " << sinIntegralTrapezes(20) << endl;
     cout << "Sin Integral(50): " << sinIntegralTrapezes(50) << endl;
     cout << "Sin Integral(100): " << sinIntegralTrapezes(100) << endl;
-    cout << "Sin Integral(500): " << sinIntegralSimpson(500) << endl;
-    cout << "Sin Integral(1000): " << sinIntegralSimpson(1000) << endl;
+    cout << "Sin Integral(500): " << sinIntegralTrapezes(500) << endl;
+    cout << "Sin Integral(1000): " << sinIntegralTrapezes(1000) << endl;
+    cout << "Q.C: " << (sinIntegralTrapezes(20) - sinIntegralTrapezes(10))/(sinIntegralTrapezes(40) - sinIntegralTrapezes(20)) << endl;
+
     // Simpsons rule
     cout << endl << "------ SIMPSONS RULES ------" << endl;
     cout << "Sin Integral(10): " << sinIntegralSimpson(10) << endl;
@@ -26,6 +28,7 @@ int main()
     cout << "Sin Integral(100): " << sinIntegralSimpson(100) << endl;
     cout << "Sin Integral(500): " << sinIntegralSimpson(500) << endl;
     cout << "Sin Integral(1000): " << sinIntegralSimpson(1000) << endl;
+    cout << "Q.C: " << (sinIntegralSimpson(20) - sinIntegralSimpson(10))/(sinIntegralSimpson(40) - sinIntegralSimpson(20)) << endl;
     return 0;
 }
 
