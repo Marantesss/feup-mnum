@@ -28,21 +28,14 @@ int main() {
 	//for(int i = 0; i < 24; i++) {
 		if (f(x3) < f(x4)) {
 			x2 = x4;
-			// FORMA ESTUPIDA DO SOEIRO
-			// x4 = x3;
-			// x3 = B * (x4 - x1) +  x1;
+			x4 = x3;
+			x3 = x1 + A*(x2-x1);
 		}
-		else {
+		else{
 			x1 = x3;
-			// FORMA ESTUPIDA DO SOEIRO
-			// x3 = x4;
-			// x4 = B * (x2 - x3) +  x3;
+			x3 = x4;
+			x4 = x1 + B*(x2-x1);
 		}
-		// FORMA COMO UMA PESSOA NORMAL FARIA :)
-		x3 = A * (x2 - x1) + x1;
-		x4 = B * (x2 - x1) + x1;
-		//cout << x1 << endl << x2 << endl;
-		//cout << x3 << endl << x4 << endl;
 	}
 
 	cout << "minimo " << endl;
