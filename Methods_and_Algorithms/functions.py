@@ -44,3 +44,25 @@ def f_grad_dx(x, y):
 
 def f_grad_dy(x, y):
     return 2 * (y + 2)
+
+### Exame 2018/19 ###
+
+def f1(x, y):
+    return math.sin(x + y) - math.exp(x - y)
+
+def f2(x, y):
+    return math.cos(x + y) - pow(x,2)*pow(y,2)
+
+# derived f1 and f2
+
+def f1_dx(x, y):
+    return math.cos(y + x) - math.exp(x - y)
+
+def f1_dy(x, y):
+    return math.cos(x + y) + math.exp(x - y)
+
+def f2_dx(x, y):
+    return -math.sin(x + y) - 2 * pow(y, 2) * x
+
+def f2_dy(x, y):
+    return -math.sin(x + y) - 2 * pow(x, 2) * y

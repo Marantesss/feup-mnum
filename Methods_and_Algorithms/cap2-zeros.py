@@ -71,3 +71,27 @@ BISSECAO -      Iteracoes: 18   Aproximacao: 0.8667640686035156
 CORDA -         Iteracoes: 9    Aproximacao: 0.8667595970801818
 TANGENTE -      Iteracoes: 4    Aproximacao: 0.8667603991750858
 '''
+
+### Resolucao de sistemas de equacoes nao lineares por metodos iterativos ###
+
+### Ex 2. Exame 2018/19 ###
+
+def getNewX(x, y):
+    return x - (f.f1(x, y) * f.f2_dy(x, y) - f.f2(x, y) * f.f1_dy(x, y))/(f.f1_dx(x, y) * f.f2_dy(x, y) - f.f2_dx(x, y) * f.f1_dy(x, y))
+
+def getNewY(x, y):
+    return y - (f.f2(x, y) * f.f1_dx(x, y) - f.f1(x, y) * f.f2_dx(x, y))/(f.f1_dx(x, y) * f.f2_dy(x, y) - f.f2_dx(x, y) * f.f1_dy(x, y))
+
+def metNewton(x0, y0, num_iteracoes):
+    x = x0
+    y = y0
+    iterations = 0
+    while iterations < num_iteracoes:
+        x_old = x
+        y_old = y
+        x = getNewX(x_old, y_old)
+        y = getNewY(x_old, y_old)
+        iterations += 1
+        print("I: " + str(iterations) + "\tx: " + str(x) + "\ty: " + str(y))
+
+metNewton(-0.5, 1, 2)

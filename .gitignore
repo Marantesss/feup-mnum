@@ -53,4 +53,6 @@ Aula11/obj
 Aula11/*.cbp
 Aula11/*.depend
 Aula11/*.layout
-python_algorithms/__pycache__
+Methods_and_Algorithms/__pycache__
+Methods_and_Algorithms/*.pyc
+.vscode/
