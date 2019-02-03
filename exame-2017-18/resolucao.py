@@ -235,5 +235,45 @@ def ex4():
 
     
 
-print("_____ EXERICIO 4 _____")
+print("_____ EXERCICIO 4 _____")
 ex4()
+
+### Exercicio 5 ###
+
+def w(x, y):
+    return -1.1*x*y + 12*y + 7*math.pow(x, 2) - 8 * x
+
+def w_dx(x, y):
+    return -1.1*y + 14*x - 8
+
+def w_dy(x, y):
+    return -1.1*x + 12
+
+def metGrad(x0, y0, h0, num_iter):
+    x = x0
+    y = y0
+    h = h0
+    iterations = 0
+
+    while iterations < num_iter:
+        # calcular novos valores
+        xn = x - h * w_dx(x, y)
+        yn = y - h * w_dy(x, y)
+
+        # valor da funcao diminui
+        if w(xn, yn) < w(x, y):
+            x = xn
+            y = yn
+            h = 2 * h
+        # valor da funcao aumentou, entao temos que "volat atras"
+        else:
+            h = h/2.0
+
+        iterations += 1
+        print("I: " + str(iterations) + "\tw(x, y): " + str(w(x, y)) + "\tx: " + str(x) + "\ty:" + str(y))
+
+def ex5():
+    metGrad(3, 1, 0.1, 1)
+
+print("_____ EXERCICIO 5 _____")
+ex5()
