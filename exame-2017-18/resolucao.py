@@ -163,8 +163,77 @@ def ex3():
         x -= f3(x) / f3_dx(x)
         print("I: " + str(i + 1) + "\tx: " + str(x))
     
+print("_____ EXERICIO 3 _____")
 ex3()
 
 ### Exericico 4 ###
 
-#def ex4():
+def dC_dt(C, T):
+    return -math.exp(-0.5/(T + 273)) * C
+
+def dT_dt(C, T):
+    return 30 * math.exp(-0.5/(T + 273)) * C - 0.5 * (T - 20)
+
+def euler(t, C, T, h, n):
+    i = 0
+    print(i, t, C, T)
+    while i < n:
+        t += h
+        old_C = C
+        old_T = T
+        C += h * dC_dt(old_C, old_T)
+        T += h * dT_dt(old_C, old_T)
+        print(i + 1, t, C, T)
+        i += 1
+
+    return T
+    
+def rk4(t, C, T, h):
+    i = 0
+    print(i, t, C, T)
+    for i in range(2):
+        t += h
+        old_C = C
+        old_T = T
+        # dy1
+        dy1_C = h * dC_dt(old_C, old_T)
+        dy1_T = h * dT_dt(old_C, old_T)
+        # dy2
+        dy2_C = h * dC_dt(old_C + dy1_C/2.0, old_T + h/2.0)
+        dy2_T = h * dT_dt(old_C + h/2.0, old_T + dy1_T/2.0)
+        # dy3
+        dy3_C = h * dC_dt(old_C + dy2_C/2.0, old_T + h/2.0)
+        dy3_T = h * dT_dt(old_C + h/2.0, old_T + dy2_T/2.0)
+        # dy4
+        dy4_C = h * dC_dt(old_C + dy3_C, old_T + h)
+        dy4_T = h * dT_dt(old_C + h, old_T + dy3_T)
+        # T e C
+        C += (1.0/6.0) * (dy1_C + 2*dy2_C + 2*dy3_C + dy4_C)
+        T += (1.0/6.0) * (dy1_T + 2*dy2_T + 2*dy3_T + dy4_T)
+        print(i + 1, t, C, T)
+    
+
+def ex4():
+    ### Metodo de Euler ###
+    print("__ Metodo de Euler __")
+    euler(0, 2.5, 25, 0.25, 3)
+
+    ### Metodo de RK4 ###
+    print("__ Metodo de RK4 __")
+    rk4(0, 2.5, 25, 0.25)
+    
+    h = 0.25
+    h_l = h/2.0
+    h_ll = h/4.0
+    T = euler(0, 2.5, 25, h, 2)
+    T_l = euler(0, 2.5, 25, h_l, 4)
+    T_ll = euler(0, 2.5, 25, h_ll, 8)
+    print("__ ERROS __")
+    print(T, T_l, T_ll)
+    print("Q.C: " + str((T_l - T)/(T_ll - T_l)))
+    print("Erro estimado: " + str((T_ll - T_l)/1.0)) # O metodo de Euler e de primeira ordem
+
+    
+
+print("_____ EXERICIO 4 _____")
+ex4()
